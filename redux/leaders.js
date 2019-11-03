@@ -9,11 +9,11 @@ export const leaders = (state = {
 
     switch (action.type) {
         case ActionTypes.ADD_LEADERS:
-            return { ...state, isLoading: false, errmsg: null, leaders: action.payLoad }
+            return { ...state, isLoading: false, errmsg: null, leaders: action.payload }
         case ActionTypes.LEADERS_LOADING:
             return { ...state, isLoading: true, errmsg: null, leaders: [] }
         case ActionTypes.LEADERS_FAILED:
-            return { ...state, isLoading: false, errmsg: action.payLoad  }
+            return { ...state, isLoading: false, errmsg: action.payload  }
         default:
             return state;
     }

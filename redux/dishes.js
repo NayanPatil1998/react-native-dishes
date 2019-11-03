@@ -9,11 +9,11 @@ export const dishes = (state = {
 
     switch (action.type) {
         case ActionTypes.ADD_DISHES:
-            return { ...state, isLoading: false, errmsg: null, dishes: action.payLoad }
+            return { ...state, isLoading: false, errmsg: null, dishes: action.payload }
         case ActionTypes.DISHES_LOADING:
             return { ...state, isLoading: true, errmsg: null, dishes: [] }
         case ActionTypes.DISHES_FAILED:
-            return { ...state, isLoading: false, errmsg: action.payLoad  }
+            return { ...state, isLoading: false, errmsg: action.payload  }
         default:
             return state;
     }

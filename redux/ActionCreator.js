@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes'
 import { baseUrl } from '../shared/baseUrl'
 
-export const fetchComments = () => {
+export const fetchComments = () =>(dispatch)=> {
     return fetch(baseUrl + 'comments')
         .then(response => {
             if (response.ok) {
@@ -31,7 +31,7 @@ export const addComments = (comments) => ({
     payload: comments
 });
 
-export const fetchDishes = () => {
+export const fetchDishes = () => (dispatch)=> {
 
     dispatch(dishesLoading())
     return fetch(baseUrl + 'dishes')
@@ -66,7 +66,7 @@ export const addDishes = (comments) => ({
     payload: dishes
 });
 
-export const fetchPromos = () => {
+export const fetchPromos = () =>(dispatch)=> {
 
     dispatch(promosLoading())
     return fetch(baseUrl + 'promotions')
@@ -85,7 +85,7 @@ export const fetchPromos = () => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(promos => dispatch(addPromos(dishes)))
+        .then(promos => dispatch(addPromos(promos)))
         .catch(error => dispatch(promosFailed(error.message)));
 }
 
@@ -101,7 +101,7 @@ export const addPromos = (promos) => ({
     payload: promos
 });
 
-export const fetchLeaders = () => {
+export const fetchLeaders = () =>(dispatch)=> {
 
     dispatch(leadersLoading())
     return fetch(baseUrl + 'leaders')
@@ -120,7 +120,7 @@ export const fetchLeaders = () => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(promos => dispatch(addLeaders(dishes)))
+        .then(leaders => dispatch(addLeaders(leaders)))
         .catch(error => dispatch(leadersFailed(error.message)));
 }
 

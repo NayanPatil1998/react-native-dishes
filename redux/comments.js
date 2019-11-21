@@ -1,18 +1,22 @@
-import * as ActionTypes from './ActionTypes'
-
+import * as ActionTypes from './ActionTypes';
 
 export const comments = (state = {
-    errmsg: null,
-    comments: []
-}, action) => {
+        isLoading: true,
+        errMess: null,
+        comments: []
+    }, action) => {
 
-    switch (action.type) {
-        case ActionTypes.ADD_COMMENTS:
-            return { ...state, errmsg: null, comments: action.payload }
-        case ActionTypes.COMMENTS_FAILED:
-            return { ...state, errmsg: null}
+        switch(action.type) {
+            case ActionTypes.ADD_COMMENTS:
+                return {...state, isLoading: false, errMess: null, comments: action.payload};
 
-        default:
-            return state;
-    }
-}
+            case ActionTypes.COMMENTS_LOADING:
+                return {...state, isLoading: true, errMess: null, comments: []};
+
+            case ActionTypes.COMMENTS_FAILED:
+                return {...state, isLoading: false, errMess: action.payload, comments: []};
+
+            default:
+                return state;
+        }
+    };
